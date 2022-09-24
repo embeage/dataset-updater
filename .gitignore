@@ -1,0 +1,10 @@
+service.json
+.env
+.venv
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.vscode
+*.csv
+*.log
