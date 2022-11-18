@@ -114,6 +114,8 @@ async def download_encodings(session, svtplay_id):
     manifest = await dash_manifest(session, svtplay_id)
     soup = BeautifulSoup(manifest.decode('utf8'), 'lxml')
     base_url = soup.find('baseurl').text
+    if soup.find('segmenttemplate')['media'].startswith('chunk-stream'):
+        raise ValueError("wrong manifest schema")
 
     video_tasks = []
     for adaptation_set in soup.find_all('adaptationset'):
