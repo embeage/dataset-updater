@@ -116,6 +116,10 @@ class DB:
         for video in videos:
             if not active(video):
                 continue
+            if len(video['id']) != 7:
+                logging.warning("Cannot insert [%s] with unexpected id [%s]",
+                                video['name'], video['id'])
+                continue
             curs.execute("""
                 INSERT INTO Videos AS V
                 VALUES (%(id)s, %(name)s, %(duration)s, %(valid_from)s,
