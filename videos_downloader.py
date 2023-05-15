@@ -48,7 +48,7 @@ QUERY = """query {
                       requests.exceptions.RequestException,
                       max_time=300)
 def fetch_graphql():
-    resp = requests.post(f'{API_URL}/Contento/graphql', json={'query': QUERY})
+    resp = requests.post(f'{API_URL}/contento/graphql', json={'query': QUERY})
     resp.raise_for_status()
     return json.loads(resp.text)
 
